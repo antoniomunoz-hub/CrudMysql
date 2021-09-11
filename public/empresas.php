@@ -1,26 +1,47 @@
 <?php
+
+$dbUser = 'root';
+$dbPassword = 'root';
+$dbHost = 'localhost';
+$dbDatabase = 'prueba_tecnica1.1';
+
+
+// Usamos try catch para no parar la ejecucion en caso de error de cualquier tipo
+
+try{
+$dbConnexion = new PDO("mysql:host=${dbHost};dbname=${dbDatabase}", $dbUser, $dbPassword);
+} catch (Exception $e) {
+    echo 'Error en la conexion a la Base de datos',
+    $e->getCode();
+}
+
+var_dump($dbConnexion);
+
+?>
+
+<?php
+
 $empresas = [
     ['id'=> 1,'nombre'=>'Modas Marin', 'telefono'=> 644253154, 'email'=>'modasmarin@mail.com', 'sector'=>'comercio'],
     ['id'=> 1,'nombre'=>'Reformas Roman', 'telefono'=> 654254554, 'email'=>'reformasroman@mail.com', 'sector'=>'construccion'],
     ['id'=> 1,'nombre'=>'Mario Peluqueros', 'telefono'=> 645679154, 'email'=>'mariopeluca@mail.com', 'sector'=>'salud y belleza'],
     ['id'=> 1,'nombre'=>'Informatica Union', 'telefono'=> 638711654, 'email'=>'unioninformatica@mail.com', 'sector'=>'ingenieria']
 ];
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/main.css">
-    <title>Document</title>
-    
-</head>
-<body>
-   <?php
-   include("./enlaces.php");
-   ?>
+
+<?php
+   include("./headers.php");
+?>
+
+<?php
+    include("./enlaces.php");
+?>
+
     <table>
         <thead>
         
@@ -37,6 +58,8 @@ $empresas = [
         </thead>
 
         <tbody>
+        
+        <!-- cargamos los datos en la tabla -->
 
         <?php foreach($empresas as $empresa):?>
             <tr>
