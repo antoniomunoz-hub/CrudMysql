@@ -1,21 +1,24 @@
 <?php
 
 $dbUser = 'root';
-$dbPassword = 'root';
-$dbHost = 'localhost';
+$dbPassword = '3512';
+$dbHost = '127.0.0.1';
 $dbDatabase = 'prueba_tecnica1.1';
 
 
 // Usamos try catch para no parar la ejecucion en caso de error de cualquier tipo
 
 try{
+
 $dbConnexion = new PDO("mysql:host=${dbHost};dbname=${dbDatabase}", $dbUser, $dbPassword);
+$dbConnexion ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (Exception $e) {
     echo 'Error en la conexion a la Base de datos',
     $e->getCode();
 }
 
 var_dump($dbConnexion);
+var_dump(gettype($dbConnexion));
 
 ?>
 
