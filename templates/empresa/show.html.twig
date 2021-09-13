@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmpresaController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <table>
+        <thead>
+        
+            <tr>
+                <td>Id</td>
+                <td>Nombre</td>
+                <td>Telefono</td>
+                <td>Email</td>
+                <td>Sector</td>
+                <td>Acciones</td>
+            </tr>
+        
+        </thead>
+
+        <tbody>
+    {% for empresa in empresas %}
+        <tr>
+            <td>{{empresa.id}}</td>
+            <td>{{empresa.nombre}}</td>
+            <td>{{empresa.telefono}}</td>
+            <td>{{empresa.email}}</td>
+            <td>{{empresa.sector}}</td>
+            <td><a href="/empresa/{{empresa.id}}">Editar</a></td>
+            <td><a href="/empresa/delete/{{empresa.id}}" onclick="return confirm('¿Desea Eliminar La Empresa?')">Eliminar</a></td>
+        </tr>
+        
+    {% else %}
+        No existen Registros.
+{% endfor %}
+<a href="/empresa/add"><button>Nueva Empresa</button></a>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EmpresaController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Empresa</h1>
+
+    <form action="/empresa/update/{{empresa.id}}" method="POST">
+        <div>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" name="nombre" id="nombre" value="{{empresa.nombre}}">
+        </div>
+        <div>
+            <label for="email">Email:</label><br>
+            <input type="text" name="email" id="email"  value="{{empresa.email}}">
+        </div>
+        <div>
+            <label for="telefono">Telefono:</label><br>
+            <input type="text" name="telefono" id="telefono"  value="{{empresa.telefono}}">
+        </div>
+        <div>
+            <label for="sector">Sector:</label><br>
+            <input type="text" name="sector" id="sector"  value="{{empresa.sector}}">
+        </div>
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
