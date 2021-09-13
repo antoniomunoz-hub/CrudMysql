@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EmpresaController!{% endblock %}
+{% block title %}Hello SectorController!{% endblock %}
 
 {% block body %}
 <style>
@@ -17,6 +17,8 @@
 
                 <td>Id</td>
                 <td>Nombre</td>
+                <td>Editar</td>
+                <td>Eliminar</td>
 
             </tr>
         
@@ -27,10 +29,13 @@
         <tr>
             <td>{{sector.id}}</td>
             <td>{{sector.nombre}}</td>
-            
+            <td><a href="/sector/{{sector.id}}">Editar</a></td>
+            <td><a href="/sector/delete/{{sector.id}}" onclick="return confirm('¿Desea Eliminar La Empresa?')">Eliminar</a></td>
         </tr>
     {% else %}
         No existen Registros.
     {% endfor %}
+    <a href="/sector/add"><button>Nueva Sector</button></a>
+
 </div>
 {% endblock %}

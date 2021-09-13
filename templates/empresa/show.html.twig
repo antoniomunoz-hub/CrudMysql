@@ -19,7 +19,8 @@
                 <td>Telefono</td>
                 <td>Email</td>
                 <td>Sector</td>
-                <td>Acciones</td>
+                <td>Editar</td>
+                <td>Eliminar</td>
             </tr>
         
         </thead>
@@ -32,8 +33,8 @@
             <td>{{empresa.telefono}}</td>
             <td>{{empresa.email}}</td>
             <td>{{empresa.sector}}</td>
-            <td><a href="/empresa/{{empresa.id}}">Editar</a></td>
-            <td><a href="/empresa/delete/{{empresa.id}}" onclick="return confirm('¿Desea Eliminar La Empresa?')">Eliminar</a></td>
+            <td><a href="/empresa/{{empresa.id}}"><button>Editar</button></a></td>
+            <td><a href="/empresa/delete/{{empresa.id}}" onclick="return confirm('¿Desea Eliminar La Empresa?')"><button class="delete">Eliminar</button></a></td>
         </tr>
         
     {% else %}

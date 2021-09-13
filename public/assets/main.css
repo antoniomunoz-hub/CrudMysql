@@ -16,3 +16,7 @@ th,
 td {
     padding: 5px;
 }
+
+button.delete{
+    background-color: red;
+}
