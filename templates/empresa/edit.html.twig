@@ -25,9 +25,11 @@
             <input type="text" name="telefono" id="telefono"  value="{{empresa.telefono}}">
         </div>
         <div>
-            <label for="sector">Sector:</label><br>
-            <input type="text" name="sector" id="sector"  value="{{empresa.sector}}">
-        </div>
+            <select class="form-control" id="sector" name= "sector">
+                {% for sector in sectores %}
+                    <option value="{{sector.id}} {{sector.nombre}}">{{sector.nombre}}</option>
+                {% endfor %}
+        </div>    
         <div>
             <button type="submit">Enviar</button>
         </div>

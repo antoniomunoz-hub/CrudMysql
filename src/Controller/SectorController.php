@@ -17,6 +17,8 @@ class SectorController extends AbstractController
      */
     public function index(): Response
     {
+        $entityManager = $this->getDoctrine()->getManager();
+
         return $this->render('sector/add.html.twig', [
             'controller_name' => 'SectorController',
         ]);
@@ -122,7 +124,7 @@ class SectorController extends AbstractController
     public function deleteSector(
         int $id,
         Request $request
-    ): Response
+    ):  Response
      {
         $sector = $this->getDoctrine() ->getRepository(Sector::class) ->find($id);
         

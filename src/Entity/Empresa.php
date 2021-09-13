@@ -33,7 +33,8 @@ class Empresa
     private $telefono;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Sector::class)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $sector;
 
@@ -78,12 +79,12 @@ class Empresa
         return $this;
     }
 
-    public function getSector(): ?string
+    public function getSector(): ?Sector
     {
         return $this->sector;
     }
 
-    public function setSector(string $sector): self
+    public function setSector(?Sector $sector): self
     {
         $this->sector = $sector;
 
