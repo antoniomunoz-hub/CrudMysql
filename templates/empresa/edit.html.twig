@@ -28,10 +28,11 @@
             <select class="form-control" id="sector" name= "sector">
                 {% for sector in sectores %}
                     <option value="{{sector.id}} {{sector.nombre}}">{{sector.nombre}}</option>
-                {% endfor %}
-        </div>    
+                {% endfor %}</select>
+        </div>   
         <div>
             <button type="submit">Enviar</button>
+            <a href="/empresa"><button>Cancelar</button></a>
         </div>
     </form>
 </div>

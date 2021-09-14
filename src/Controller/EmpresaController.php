@@ -15,9 +15,9 @@ class EmpresaController extends AbstractController
 {
     /**
      * @Route("/empresa/add", 
-     * name="add")
+     * name="empresa_add")
      */
-    public function index(): Response
+    public function add(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -32,7 +32,7 @@ class EmpresaController extends AbstractController
 
     /**
      * @Route("/empresa", 
-     * name="create_empresa", 
+     * name="create_empresa",
      * methods="POST")
      */
     public function createEmpresa(
@@ -77,9 +77,11 @@ class EmpresaController extends AbstractController
                 'No encontro empresa con id '.$id
             );
         }
+        $sectores = $this->getDoctrine() ->getRepository(Sector::class) ->findAll();
+
         // or render a template
         // in the template, print things with {{ empresa.name }}
-        return $this->render('empresa/edit.html.twig', ['empresa' => $empresa]);
+        return $this->render('empresa/edit.html.twig', ['empresa' => $empresa, 'sectores'=>$sectores]);
     }
 
      /**
@@ -119,7 +121,11 @@ class EmpresaController extends AbstractController
         $empresa->setNombre($request->request->get("nombre"));
         $empresa->setEmail($request->request->get("email"));
         $empresa->setTelefono($request->request->get("telefono"));
-        $empresa->setSector($request->request->get("sector"));
+        $sector = $this->getDoctrine()
+        ->getRepository(Sector::class)
+        ->find($request->request->get("sector"));
+
+        $empresa->setSector($sector);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($empresa);
@@ -139,7 +145,7 @@ class EmpresaController extends AbstractController
     public function deleteEmpresa(
         int $id,
         Request $request
-    ): Response
+    ):  Response
      {
         $empresa = $this->getDoctrine() ->getRepository(Empresa::class) ->find($id);
         

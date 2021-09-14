@@ -28,8 +28,8 @@
         <tr>
             <td>{{sector.id}}</td>
             <td>{{sector.nombre}}</td>
-            <td><a href="/sector/{{sector.id}}">Editar</a></td>
-            <td><a href="/sector/delete/{{sector.id}}" onclick="return confirm('¿Desea Eliminar La Empresa?')">Eliminar</a></td>
+            <td><a href="/sector/{{sector.id}}"><button>Editar</button></a></td>
+            <td><a href="/sector/delete/{{sector.id}}" onclick="return confirm('¿Desea Eliminar La Empresa?')"><button class="delete">Eliminar</button></a></td>
         </tr>
     {% else %}
         No existen Registros.
